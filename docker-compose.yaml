@@ -1,0 +1,46 @@
+# version: '3.8'
+
+services:
+  # main node
+  ubuntu-main-node:
+    build: 
+      context: .
+      dockerfile: main-node.dockerfile
+    container_name: ubuntu-main-node
+    cpus: 0.5
+    mem_limit: 512MB
+
+    networks:
+      ubuntu-nodes-net:
+        ipv4_address: 192.168.1.100
+    
+  ubuntu-node-2:
+    build: 
+      context: .
+      dockerfile: node.dockerfile
+    container_name: ubuntu-node-2
+    cpus: 0.5
+    mem_limit: 512MB
+
+    networks:
+      ubuntu-nodes-net:
+        ipv4_address: 192.168.1.101
+    
+  ubuntu-node-3:
+    build: 
+      context: .
+      dockerfile: node.dockerfile
+    container_name: ubuntu-node-3
+    cpus: 0.5
+    mem_limit: 512MB
+
+    networks:
+      ubuntu-nodes-net:
+        ipv4_address: 192.168.1.102
+
+networks:
+  ubuntu-nodes-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
