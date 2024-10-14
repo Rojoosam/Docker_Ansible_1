@@ -5,10 +5,10 @@ services:
   ubuntu-main-node:
     build: 
       context: .
-      dockerfile: main-node.dockerfile
+      dockerfile: /docker/main-node.dockerfile
     container_name: ubuntu-main-node
-    cpus: 0.5
-    mem_limit: 512MB
+    cpus: 0.25
+    mem_limit: 128MB
 
     networks:
       ubuntu-nodes-net:
@@ -17,10 +17,10 @@ services:
   ubuntu-node-2:
     build: 
       context: .
-      dockerfile: node.dockerfile
+      dockerfile: /docker/node.dockerfile
     container_name: ubuntu-node-2
-    cpus: 0.5
-    mem_limit: 512MB
+    cpus: 0.25
+    mem_limit: 128MB
 
     networks:
       ubuntu-nodes-net:
@@ -29,14 +29,36 @@ services:
   ubuntu-node-3:
     build: 
       context: .
-      dockerfile: node.dockerfile
+      dockerfile: /docker/node.dockerfile
     container_name: ubuntu-node-3
-    cpus: 0.5
-    mem_limit: 512MB
+    cpus: 0.25
+    mem_limit: 128MB
 
     networks:
       ubuntu-nodes-net:
         ipv4_address: 192.168.1.102
+  ubuntu-node-4:
+    build: 
+      context: .
+      dockerfile: /docker/node.dockerfile
+    container_name: ubuntu-node-4
+    cpus: 0.25
+    mem_limit: 128MB
+
+    networks:
+      ubuntu-nodes-net:
+        ipv4_address: 192.168.1.103
+  ubuntu-node-5:
+    build: 
+      context: .
+      dockerfile: /docker/node.dockerfile
+    container_name: ubuntu-node-5
+    cpus: 0.25
+    mem_limit: 128MB
+
+    networks:
+      ubuntu-nodes-net:
+        ipv4_address: 192.168.1.104
 
 networks:
   ubuntu-nodes-net:

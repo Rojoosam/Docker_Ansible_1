@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /root/.ssh
 
 # Copy the public SSH key into the container
-COPY /secrets/id_rsa.pub /root/.ssh/authorized_keys
+COPY secrets/id_rsa.pub /root/.ssh/authorized_keys
 
 # Change the permissions for the previous file 
 RUN chmod 600 /root/.ssh/authorized_keys

@@ -1,0 +1,7 @@
+---
+- name: Ping all workstations
+  hosts: workstations
+  tasks:
+    - name: Ping hosts
+      ping:
+  gather_facts: no

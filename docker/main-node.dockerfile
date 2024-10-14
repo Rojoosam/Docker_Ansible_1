@@ -13,18 +13,23 @@ RUN apt-get update && apt-get install -y \
     nano \
     && apt-get clean
 
-# Creates the hosts file for ansible
-RUN mkdir -p /etc/ansible && \
-    echo "localhost ansible_connection=local" > /etc/ansible/hosts
+# Creates the folder ansible
+RUN mkdir -p /etc/ansible 
 
 # Creates the .ssh folder into the container 
 RUN mkdir -p /root/.ssh
 
 # Copy the id_rsa for ssh to node containers
-COPY /secrets/id_rsa /root/.ssh/id_rsa
+COPY secrets/id_rsa /root/.ssh/id_rsa
 
 # Change the permissions for the previous file 
 RUN chmod 600 /root/.ssh/id_rsa
+
+# Ansible hosts configuration 
+COPY ansible/hosts.yaml /etc/ansible/hosts.yaml
+
+# Ansible playbook 
+COPY ansible/ping_playbook.yaml /etc/ansible/ping_playbook.yaml
 
 # Start SSH service
 RUN service ssh start

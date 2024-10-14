@@ -1,0 +1,19 @@
+all:
+  hosts:
+    ubuntu-main-node:  
+      ansible_host: 192.168.1.100
+
+  children:
+    ubuntu-servers:
+      hosts:
+        server1: 
+          ansible_host: 192.168.1.101
+        server2:
+          ansible_host: 192.168.1.102
+          
+    workstations:
+      hosts:
+        workstation1:
+          ansible_host: 192.168.1.103
+        workstation2:
+          ansible_host: 192.168.1.104
