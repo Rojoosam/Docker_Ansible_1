@@ -25,6 +25,8 @@ COPY secrets/id_rsa /root/.ssh/id_rsa
 # Change the permissions for the previous file 
 RUN chmod 600 /root/.ssh/id_rsa
 
+RUN chmod 700 /etc/ansible
+
 # Ansible hosts configuration 
 COPY ansible/hosts.yaml /etc/ansible/hosts.yaml
 
